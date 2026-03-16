@@ -32,8 +32,21 @@ export default function ChatApp() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const scrollRef = useRef(null);
+
+  // Gérer le redimensionnement automatique
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setIsSidebarOpen(false);
+      } else {
+        setIsSidebarOpen(true);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Sauvegarde automatique des chats dans le localStorage
   useEffect(() => {
@@ -176,12 +189,20 @@ export default function ChatApp() {
   };
 
   return (
-    <div className="flex h-screen bg-[#0a0a0a] text-zinc-100 font-sans selection:bg-indigo-500/30">
+    <div className="flex h-screen bg-[#0a0a0a] text-zinc-100 font-sans selection:bg-indigo-500/30 overflow-hidden">
       
+      {/* OVERLAY FOR MOBILE */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden animate-in fade-in duration-300"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* SIDEBAR */}
       <aside className={cn(
-        "bg-[#111] border-r border-zinc-800/50 transition-all duration-300 flex flex-col relative z-20",
-        isSidebarOpen ? "w-72" : "w-0 overflow-hidden"
+        "bg-[#111] border-r border-zinc-800/50 transition-all duration-300 flex flex-col fixed inset-y-0 left-0 z-50 md:relative md:z-20",
+        isSidebarOpen ? "w-72 translate-x-0" : "w-0 -translate-x-full md:w-0 md:translate-x-0 overflow-hidden"
       )}>
         <div className="p-4 flex items-center gap-3 border-b border-zinc-800/50">
           <div className="bg-indigo-600 p-2 rounded-xl">

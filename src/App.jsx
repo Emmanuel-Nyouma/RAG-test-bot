@@ -277,9 +277,7 @@ export default function ChatApp() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-xl">
                 {[
                   "Comment réserver un vol Camair-Co ?", 
-                  "Quels sont les objets interdits en cabine ?", 
-                  "Comment modifier ma réservation ?", 
-                  "Horaires des vols Douala - Yaoundé"
+                  "Quels sont les objets interdits en cabine ?"
                 ].map((hint, i) => (
                   <button 
                     key={i} 

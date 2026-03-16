@@ -275,7 +275,12 @@ export default function ChatApp() {
                 Comment puis-je vous aider ?
               </h1>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-xl">
-                {["Explique-moi le cloud computing", "Comment créer une API ?", "Idées de business AI", "Recette de cuisine saine"].map((hint, i) => (
+                {[
+                  "Comment réserver un vol Camair-Co ?", 
+                  "Quels sont les objets interdits en cabine ?", 
+                  "Comment modifier ma réservation ?", 
+                  "Horaires des vols Douala - Yaoundé"
+                ].map((hint, i) => (
                   <button 
                     key={i} 
                     onClick={() => setInput(hint)}

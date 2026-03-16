@@ -228,13 +228,9 @@ export default function ChatApp() {
         </div>
 
         <div className="p-4 border-t border-zinc-800/50 bg-[#0d0d0d]">
-          <div className="flex items-center gap-3 p-2 hover:bg-zinc-800/50 rounded-lg cursor-pointer transition-colors">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-xs font-bold">JD</div>
-            <div className="flex-grow">
-              <div className="text-xs font-medium">John Doe</div>
-              <div className="text-[10px] text-zinc-500">Plan Premium</div>
-            </div>
-            <Settings size={16} className="text-zinc-500" />
+          <div className="flex items-center gap-3 p-2 hover:bg-zinc-800/50 rounded-lg cursor-pointer transition-colors justify-center">
+            <Settings size={18} className="text-zinc-500 hover:text-indigo-400 transition-colors" />
+            <span className="text-xs text-zinc-500 font-medium">Paramètres</span>
           </div>
         </div>
       </aside>

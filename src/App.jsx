@@ -123,7 +123,7 @@ export default function ChatApp() {
     const currentChat = chats.find(c => c.id === activeId) || { sessionId: 'session-' + Math.random().toString(36).substr(2, 9) };
 
     try {
-      const WEBHOOK_URL = 'https://phylis-nondynamic-alma.ngrok-free.dev/webhook-test/jemman33427';
+      const WEBHOOK_URL = 'https://phylis-nondynamic-alma.ngrok-free.dev/webhook/jemman33427';
       
       const response = await fetch(WEBHOOK_URL, {
         method: 'POST',
